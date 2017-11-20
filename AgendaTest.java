@@ -104,4 +104,54 @@ public class AgendaTest {
 		fail("Contato foi criado com numero feito só de espaços");
 	}
 
+	@Test
+	public void equalsNulo(){
+	    Agenda agenda = new Agenda();
+	    Agenda outro = null;
+	    if (agenda.equals(outro)){
+			fail("Agenda foi considera igual a outra agenda nula");
+		}
+	}
+
+	@Test
+	public void equalsContatosIguais(){
+	    Agenda agenda = new Agenda();
+		agenda.cadastraContato("Gabriel", "Alves", "1234", 5);
+	    Agenda outro = new Agenda();
+		outro.cadastraContato("Gabriel", "Alves", "1234", 7);
+	    if (agenda.equals(outro)){
+			fail("Agenda tem contato iguais mas em posições diferentes e foram consideradas iguais");
+		}
+	}
+
+	@Test
+	public void equalsSemContatos(){
+	    Agenda agenda = new Agenda();
+		agenda.cadastraContato("Gabriel", "Alves", "1234", 7);
+	    Agenda outro = new Agenda();
+	    if (agenda.equals(outro)){
+			fail("Agenda sem contatos foi considera igual a outra com um contato");
+		}
+	}
+
+	@Test
+	public void equalsAmbasSemContatos(){
+	    Agenda agenda = new Agenda();
+	    Agenda outro = new Agenda();
+	    if (!agenda.equals(outro)){
+			fail("As duas agendas vazias foram consideradas diferentes");
+		}
+	}
+
+	@Test
+	public void equalsIguais(){
+	    Agenda agenda = new Agenda();
+		agenda.cadastraContato("Gabriel", "Alves", "1234", 7);
+	    Agenda outro = new Agenda();
+		outro.cadastraContato("Gabriel", "Alves", "1234", 7);
+	    if (!agenda.equals(outro)){
+			fail("As duas agendas com o mesmo contato na mesma posição foram consideradas diferentes");
+		}
+	}
+
 }

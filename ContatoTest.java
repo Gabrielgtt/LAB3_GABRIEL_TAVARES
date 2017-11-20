@@ -86,4 +86,40 @@ public class ContatoTest {
 		fail("Contato foi criado com numero feito só de espaços");
 	}
 
+	@Test
+	public void equalsNulo(){
+	    Contato instancia = new Contato("Gabriel", "Tavares", "1298912");
+	    Contato outro = null;
+	    if (instancia.equals(outro)){
+			fail("Contatos considerados iguais com um deles sendo nulo");
+		}
+	}
+
+	@Test
+	public void equalsNomeDiferente(){
+	    Contato instancia = new Contato("Gabriel", "Alves", "12421412");
+	    Contato outro = new Contato("Pedro", "Alves", "12421412");
+	    if (instancia.equals(outro)){
+			fail("Contatos considerados iguais tendo nomes diferentes");
+		}
+	}
+
+	@Test
+	public void equalsNumeroDiferente(){
+		Contato instancia = new Contato("Gabriel", "Alves", "12421412");
+	    Contato outro = new Contato("Gabriel", "Alves", "1412");
+	    if (!instancia.equals(outro)){
+			fail("Contatos considerados diferentes tendo nomes iguais");
+		}
+	}
+
+	@Test
+	public void equalsSobrenomeDiferente(){
+		Contato instancia = new Contato("Gabriel", "Tavares", "12421412");
+	    Contato outro = new Contato("Gabriel", "Alves", "1412");
+	    if (instancia.equals(outro)){
+			fail("Contatos considerados iguais tendo sobrenomes diferentes");
+		}
+	}
+
 }
